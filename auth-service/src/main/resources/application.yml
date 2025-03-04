@@ -1,0 +1,35 @@
+# Server Configuration
+server:
+  port: 8089
+
+# Spring Configuration
+spring:
+  # Database Configuration (PostgreSQL)
+  datasource:
+    url: jdbc:postgresql://localhost:5432/auth_db
+    username: postgres
+    password: 123
+    driver-class-name: org.postgresql.Driver
+
+  # JPA & Hibernate Configuration
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  # Application Configuration
+  application:
+    name: auth-service
+
+  # Cloud Configuration
+  cloud:
+    config:
+      uri: http://localhost:8888
+
+# Eureka Configuration
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
