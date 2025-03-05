@@ -3,11 +3,10 @@ package com.customer.customer_service.dtos.requestDTO;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerRequestDTO {
@@ -18,7 +17,7 @@ public class CustomerRequestDTO {
     @NotBlank(message = "First name cannot be empty")
     private String firstName;
 
-    @NotNull(message = "Email is required")
+    @NotBlank(message = "Email is required")
     @Email(message = "Email should be valid")
     private String email;
 
