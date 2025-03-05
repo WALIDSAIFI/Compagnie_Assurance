@@ -18,7 +18,7 @@ public class ContratController {
     private final ContratService contratService;
 
     // Créer un contrat d'assurance
-    @PostMapping
+    @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public ContratResponseDTO creerContrat(@RequestBody ContratRequestDTO contratRequestDto) {
         return contratService.creerContrat(contratRequestDto);
