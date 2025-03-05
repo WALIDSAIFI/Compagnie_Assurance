@@ -25,7 +25,7 @@ public class ContratServiceImpl implements ContratService {
     public ContratResponseDTO creerContrat(ContratRequestDTO contratRequestDto) {
         // Vérifier si le client existe via FeignClient
         boolean clientExists;
-        /**
+
         try {
             clientExists = Boolean.TRUE.equals(customerClient.checkCustomerExists(contratRequestDto.getClientId()).getBody());
         } catch (HttpClientErrorException.NotFound e) {
@@ -35,7 +35,7 @@ public class ContratServiceImpl implements ContratService {
         if (!clientExists) {
             throw new RuntimeException("Client non trouvé !");
         }
-         */
+
 
         Contrat contrat = contratMapper.toEntity(contratRequestDto);
         Contrat savedContrat = contratRepository.save(contrat);
@@ -47,15 +47,11 @@ public class ContratServiceImpl implements ContratService {
         Contrat contrat = contratRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Contrat non trouvé !"));
 
-        /**
         // Vérifier si le client du contrat existe encore
         boolean clientExists = Boolean.TRUE.equals(customerClient.checkCustomerExists(contrat.getClientId()).getBody());
         if (!clientExists) {
             throw new RuntimeException("Le client associé à ce contrat n'existe plus !");
         }
-        */
-
-
         return contratMapper.toDTO(contrat);
     }
 
